@@ -1,0 +1,30 @@
+server:
+  port: 8300
+spring:
+  application:
+    name: by-gateway
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 20
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    instance-info-replication-interval-seconds: 30
+    registry-fetch-interval-seconds: 3
+    serviceUrl:
+      defaultZone: http://by-cloud:123456@localhost:8100/register/eureka/
+zuul:
+  routes:
+    auth:
+      path: /auth/**
+      serviceId: by-auth
+      sensitiveHeaders: "*" #\u4E0D\u8FC7\u6EE4\u8BF7\u6C42\u4FE1\u606F
+  retryable: true # \u5F00\u542F\u91CD\u8BD5\u673A\u5236
+  ignored-services: "*"
+  ribbon:
+    eager-load:
+      enabled: true
+
+ribbon:
+  ReadTimeout: 3000 # ReadTimeout: 3000
