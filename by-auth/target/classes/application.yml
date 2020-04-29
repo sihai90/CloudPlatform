@@ -4,7 +4,17 @@ server:
 spring:
   application:
     name: by-auth
-
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        min-idle: 8
+        max-idle: 500
+        max-active: 2000
+        max-wait: 10000
+    timeout: 5000
 eureka:
   instance:
     lease-renewal-interval-in-seconds: 20 # \u65B0\u5B9E\u4F8B\u4FE1\u606F\u7684\u53D8\u5316\u5230Eureka\u670D\u52A1\u7AEF\u7684\u95F4\u9694\u65F6\u95F4\uFF0C\u5355\u4F4D\u4E3A\u79D2\

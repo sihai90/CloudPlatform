@@ -24,8 +24,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class BYSecurityConfigure extends WebSecurityConfigurerAdapter
 {
     @Autowired
-    private  BYUserDetailService byUserDetailService;
-
+    private BYUserDetailService byUserDetailService;
     /**
      * 配置密码加密方式
      *
@@ -39,7 +38,6 @@ public class BYSecurityConfigure extends WebSecurityConfigurerAdapter
 
     /**
      * 配置认证管理器
-     *
      * @return
      * @throws Exception
      */
@@ -53,7 +51,14 @@ public class BYSecurityConfigure extends WebSecurityConfigurerAdapter
     protected void configure(HttpSecurity http) throws Exception
     {
         //过滤请求只对/oauth/请求有效果
-        http.requestMatchers().antMatchers("/oauth/**").and().authorizeRequests().antMatchers("/oauth/**").authenticated().and().csrf();
+        http.requestMatchers()
+                .antMatchers("/oauth/**")
+                .and()
+                .authorizeRequests()
+                .antMatchers("/oauth/**")
+                .authenticated()
+                .and()
+                .csrf();
     }
 
     @Override
