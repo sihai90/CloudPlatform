@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="by-gateway" />
         <module name="by-common" />
         <module name="by-auth" />
         <module name="by-register" />
@@ -14,6 +15,7 @@
     <bytecodeTargetLevel>
       <module name="by-auth" target="1.8" />
       <module name="by-common" target="1.8" />
+      <module name="by-gateway" target="1.8" />
       <module name="by-platform" target="1.8" />
       <module name="by-register" target="1.8" />
     </bytecodeTargetLevel>
@@ -22,6 +24,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="by-auth" options="-parameters" />
       <module name="by-common" options="-parameters" />
+      <module name="by-gateway" options="-parameters" />
       <module name="by-register" options="-parameters" />
     </option>
   </component>

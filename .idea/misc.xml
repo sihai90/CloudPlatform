@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/by-platform/pom.xml" />
         <option value="$PROJECT_DIR$/by-register/pom.xml" />
         <option value="$PROJECT_DIR$/by-auth/pom.xml" />
+        <option value="$PROJECT_DIR$/by-gateway/pom.xml" />
       </list>
     </option>
   </component>

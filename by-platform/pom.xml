@@ -11,6 +11,7 @@
         <module>../by-common</module>
         <module>../by-register</module>
         <module>../by-auth</module>
+        <module>../by-gateway</module>
     </modules>
     <packaging>pom</packaging>
 
