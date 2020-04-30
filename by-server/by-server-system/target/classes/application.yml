@@ -1,0 +1,22 @@
+server:
+  port: 8400
+
+spring:
+  application:
+    name: by-server-system
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 20 #\u53D1\u9001\u5FC3\u8DF3\u95F4\u9694\u65F6\u95F4
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    instance-info-replication-interval-seconds: 30
+    service-url:
+      defaultZone: http://by-cloud:123456@localhost:8100/register/eureka/
+
+security:
+  oauth2:
+    resource:
+      id: ${spring.application.name}
+      user-info-uri: http://localhost:8300/auth/user
