@@ -12,6 +12,7 @@
         <module>../by-register</module>
         <module>../by-auth</module>
         <module>../by-gateway</module>
+        <module>../by-server</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -11,8 +11,10 @@
         <option value="$PROJECT_DIR$/by-register/pom.xml" />
         <option value="$PROJECT_DIR$/by-auth/pom.xml" />
         <option value="$PROJECT_DIR$/by-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/by-server/by-server-system/pom.xml" />
+        <option value="$PROJECT_DIR$/by-server/by-server-test/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>

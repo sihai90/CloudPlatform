@@ -8,6 +8,9 @@
       <module fileurl="file://$PROJECT_DIR$/by-gateway/by-gateway.iml" filepath="$PROJECT_DIR$/by-gateway/by-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/by-platform/by-platform.iml" filepath="$PROJECT_DIR$/by-platform/by-platform.iml" />
       <module fileurl="file://$PROJECT_DIR$/by-register/by-register.iml" filepath="$PROJECT_DIR$/by-register/by-register.iml" />
+      <module fileurl="file://$PROJECT_DIR$/by-server/by-server.iml" filepath="$PROJECT_DIR$/by-server/by-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/by-server/by-server-system/by-server-system.iml" filepath="$PROJECT_DIR$/by-server/by-server-system/by-server-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/by-server/by-server-test/by-server-test.iml" filepath="$PROJECT_DIR$/by-server/by-server-test/by-server-test.iml" />
     </modules>
   </component>
 </project>

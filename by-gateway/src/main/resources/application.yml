@@ -19,9 +19,20 @@ zuul:
     auth:
       path: /auth/**
       serviceId: by-auth
-      sensitiveHeaders: "*" #\u4E0D\u8FC7\u6EE4\u8BF7\u6C42\u4FE1\u606F
-  retryable: true # \u5F00\u542F\u91CD\u8BD5\u673A\u5236
+      sensitiveHeaders: "*"
+    system:
+      path: /system/**
+      serviceId: by-server-system
+      sensitiveHeaders: "*"
+    test:
+      path: /test/**
+      serviceId: by-server-test
+      sensitiveHeaders: "*"
+  retryable: true
   ignored-services: "*"
+  SendErrorFilter: #config zuul exception
+    error:
+      disable: true
   ribbon:
     eager-load:
       enabled: true
