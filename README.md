@@ -7,3 +7,5 @@
 
 
 **项目持续维护中**
+
+注意如果项目clone下来不自动加载编译，请操作--> 选着 by-platform --> 右键 add as Maven Project
