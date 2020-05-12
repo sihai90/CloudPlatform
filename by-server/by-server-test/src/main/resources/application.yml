@@ -18,20 +18,11 @@ security:
   oauth2:
     resource:
       id: ${spring.application.name}
-      user-info-uri: http://localhost:8300/auth/user
+      user-info-uri: http://localhost:8201/auth/user
 
 feign:
   hystrix:
-    enabled: false
+    enabled: true
 
 hystrix:
   shareSecurityContext: true
-  command:
-    default:
-      circuitBreaker:
-        sleepWindowInMilliseconds: 100000
-        forceClosed: true
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 600000

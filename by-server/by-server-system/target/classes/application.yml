@@ -7,7 +7,7 @@ spring:
 
 eureka:
   instance:
-    lease-renewal-interval-in-seconds: 20 #\u53D1\u9001\u5FC3\u8DF3\u95F4\u9694\u65F6\u95F4
+    lease-renewal-interval-in-seconds: 20
   client:
     register-with-eureka: true
     fetch-registry: true
@@ -19,4 +19,4 @@ security:
   oauth2:
     resource:
       id: ${spring.application.name}
-      user-info-uri: http://localhost:8300/auth/user
+      user-info-uri: http://localhost:8201/auth/user

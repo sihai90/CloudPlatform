@@ -2,13 +2,14 @@ package club.byteyun.server.test;
 
 import club.byteyun.common.annotation.EnableBYAuthExceptionHandler;
 import club.byteyun.common.annotation.EnableBYOauth2FeignClient;
+import club.byteyun.common.annotation.EnableBYServerProtect;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
-
+@EnableBYServerProtect
 @EnableFeignClients
 @EnableDiscoveryClient //开启服务注册与发现
 @EnableBYOauth2FeignClient

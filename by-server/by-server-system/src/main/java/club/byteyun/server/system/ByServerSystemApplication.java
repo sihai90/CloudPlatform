@@ -1,6 +1,7 @@
 package club.byteyun.server.system;
 
 import club.byteyun.common.annotation.EnableBYAuthExceptionHandler;
+import club.byteyun.common.annotation.EnableBYServerProtect;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
  * @Author lql
  * @version 1.0
  **/
+@EnableBYServerProtect //开启Zuul拦截所有请求
 @EnableDiscoveryClient //开启服务注册与发现
 @SpringBootApplication
 @EnableBYAuthExceptionHandler
