@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: by-cloud-server-system
+  autoconfigure: #close DataSourceAutoConfig
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 
 eureka:
   instance:

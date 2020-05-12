@@ -1,7 +1,7 @@
 package club.byteyun.server.system;
 
 import club.byteyun.common.annotation.EnableByteYunAuthExceptionHandler;
-import club.byteyun.common.annotation.EnableByteYunServerProtect;
+import club.byteyun.common.annotation.EnableByteYunCloudApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -14,7 +14,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
  * @Author lql
  * @version 1.0
  **/
-@EnableByteYunServerProtect //开启Zuul拦截所有请求
+@EnableByteYunCloudApplication //开启微服务防护 + 开启带令牌的 Feign请求 + 认证类型异常 功能
 @EnableDiscoveryClient //开启服务注册与发现
 @SpringBootApplication
 @EnableByteYunAuthExceptionHandler

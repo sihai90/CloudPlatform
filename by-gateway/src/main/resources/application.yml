@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: by-cloud-gateway
+  autoconfigure: #close DataSourceAutoConfiguration
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 
 eureka:
   instance:

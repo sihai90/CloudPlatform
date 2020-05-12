@@ -22,8 +22,7 @@ public class ByteYunServerProtectConfigure implements WebMvcConfigurer
 
     @Bean
     @ConditionalOnMissingBean(value = PasswordEncoder.class)
-    public PasswordEncoder passwordEncoder()
-    {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

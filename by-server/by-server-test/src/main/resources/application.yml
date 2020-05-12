@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: by-cloud-server-test
+  autoconfigure: #close DataSourceAutoConfig
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 
 eureka:
   instance:

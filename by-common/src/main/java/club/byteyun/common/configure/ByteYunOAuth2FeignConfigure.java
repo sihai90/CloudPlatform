@@ -15,10 +15,10 @@ import org.springframework.util.Base64Utils;
  * @Author lql
  * @version 1.0
  **/
-public class ByteYunAuth2FeignConfigure
+public class ByteYunOAuth2FeignConfigure
 {
     @Bean
-    public RequestInterceptor oauth2FeignRequestInterceptor() {
+    public RequestInterceptor auth2FeignRequestInterceptor() {
         return requestTemplate -> {
             //添加 Zuul Token
             String zuulToken = new String(Base64Utils.encode(ByteYunConstant.ZUUL_TOKEN_VALUE.getBytes()));

@@ -1,6 +1,8 @@
 package club.byteyun.auth;
 
 import club.byteyun.common.annotation.EnableByteYunAuthExceptionHandler;
+import club.byteyun.common.annotation.EnableByteYunCloudApplication;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -14,7 +16,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  **/
 @EnableDiscoveryClient //开启服务注册发现功能
 @SpringBootApplication
+@EnableByteYunCloudApplication
 @EnableByteYunAuthExceptionHandler
+@MapperScan("club.byteyun.auth.mapper")
 public class ByteYunAuthApplication
 {
     public static void main(String[] args)

@@ -1,8 +1,8 @@
 package club.byteyun.common.selector;
 
-import club.byteyun.common.annotation.EnableByteYunAuth2FeignClient;
-import club.byteyun.common.annotation.EnableByteYunAuthExceptionHandler;
-import club.byteyun.common.annotation.EnableByteYunServerProtect;
+import club.byteyun.common.configure.ByteYunAuthExceptionConfigure;
+import club.byteyun.common.configure.ByteYunOAuth2FeignConfigure;
+import club.byteyun.common.configure.ByteYunServerProtectConfigure;
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
 
@@ -20,9 +20,9 @@ public class ByteYunCloudApplicationSelector implements ImportSelector
     public String[] selectImports(AnnotationMetadata annotationMetadata)
     {
         return new String[]{
-                EnableByteYunAuth2FeignClient.class.getName(),
-                EnableByteYunAuthExceptionHandler.class.getName(),
-                EnableByteYunServerProtect.class.getName()
+                ByteYunOAuth2FeignConfigure.class.getName(),
+                ByteYunAuthExceptionConfigure.class.getName(),
+                ByteYunServerProtectConfigure.class.getName()
         };
     }
 }

@@ -1,33 +1,57 @@
 package club.byteyun.common.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import java.io.Serializable;
+import lombok.EqualsAndHashCode;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+
+import java.util.Collection;
+import java.util.Date;
 
 /**
+ * @version 1.0
  * @ClassName ByteYunAuthUser
  * @Description //TODO 授权领域对象
  * @Date 12:29 2020/4/29
  * @Author lql
- * @version 1.0
  **/
-@AllArgsConstructor
 @Data
-@NoArgsConstructor
-public class ByteYunAuthUser implements Serializable
+@EqualsAndHashCode(callSuper = true)
+public class ByteYunAuthUser extends User
 {
     private static final long serialVersionUID = -1748289340320186418L;
 
-    private String username; // 密码
+    private Long userId;
 
-    private String password; //用户名
+    private String avatar;
 
-    private boolean accountNonExpired = true; //方法返回boolean类型，用于判断账户是否未过期，未过期返回true反之返回false
+    private String email;
 
-    private boolean accountNonLocked= true; //方法用于判断账户是否未锁定
+    private String mobile;
 
-    private boolean credentialsNonExpired= true; //用于判断用户凭证是否没过期，即密码是否未过期；
+    private String sex;
 
-    private boolean enabled= true; //方法用于判断用户是否可用
+    private Long deptId;
+
+    private String deptName;
+
+    private String roleId;
+
+    private String roleName;
+
+    private Date lastLoginTime;
+
+    private String description;
+
+    private String status;
+
+    public ByteYunAuthUser(String username, String password, Collection<? extends GrantedAuthority> authorities)
+    {
+        super(username, password, authorities);
+    }
+
+    public ByteYunAuthUser(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities)
+    {
+        super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+    }
 }
