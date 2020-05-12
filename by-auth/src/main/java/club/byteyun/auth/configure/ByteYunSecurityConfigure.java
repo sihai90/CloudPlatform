@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
@@ -25,16 +24,9 @@ public class ByteYunSecurityConfigure extends WebSecurityConfigurerAdapter
 {
     @Autowired
     private ByteYunUserDetailService byteYunUserDetailService;
-    /**
-     * 配置密码加密方式
-     *
-     * @return
-     */
-    @Bean
-    public PasswordEncoder passwordEncoder()
-    {
-        return new BCryptPasswordEncoder();
-    }
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     /**
      * 配置认证管理器
@@ -64,7 +56,7 @@ public class ByteYunSecurityConfigure extends WebSecurityConfigurerAdapter
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception
     {
-        auth.userDetailsService(byteYunUserDetailService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(byteYunUserDetailService).passwordEncoder(passwordEncoder);
     }
 
 
