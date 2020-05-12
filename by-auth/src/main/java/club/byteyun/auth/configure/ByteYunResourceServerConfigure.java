@@ -2,6 +2,7 @@ package club.byteyun.auth.configure;
 
 import club.byteyun.common.handler.ByteYunAccessDeniedHandler;
 import club.byteyun.common.handler.ByteYunAuthExceptionEntryPoint;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -22,6 +23,9 @@ public class ByteYunResourceServerConfigure extends ResourceServerConfigurerAdap
 {
 
     @Autowired
+    private ByteYunAuthProperties properties;
+
+    @Autowired
     private ByteYunAccessDeniedHandler accessDeniedHandler;
 
     @Autowired
@@ -30,12 +34,16 @@ public class ByteYunResourceServerConfigure extends ResourceServerConfigurerAdap
     @Override
     public void configure(HttpSecurity http) throws Exception
     {
+        //获取到配置的免认证URL
+        String[] anonUrls = StringUtils.splitByWholeSeparatorPreserveAllTokens(properties.getAnonUrl(), ",");
+
         //关闭csrf安全防御,当前配置表示所有的请求路径都有效果
         http.csrf().disable()
                 .requestMatchers()
                 .antMatchers("/**")
                 .and()
                 .authorizeRequests()
+                .antMatchers(anonUrls).permitAll()
                 .antMatchers("/**")
                 .authenticated();
     }

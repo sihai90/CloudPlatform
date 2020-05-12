@@ -1,5 +1,6 @@
 package club.byteyun.auth.configure;
 
+import club.byteyun.auth.filter.ValidateCodeFilter;
 import club.byteyun.auth.service.ByteYunUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * @version 1.0
@@ -28,6 +30,9 @@ public class ByteYunSecurityConfigure extends WebSecurityConfigurerAdapter
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private ValidateCodeFilter validateCodeFilter;
+
     /**
      * 配置认证管理器
      * @return
@@ -43,7 +48,8 @@ public class ByteYunSecurityConfigure extends WebSecurityConfigurerAdapter
     protected void configure(HttpSecurity http) throws Exception
     {
         //过滤请求只对/oauth/请求有效果
-        http.requestMatchers()
+        http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
+                .requestMatchers()
                 .antMatchers("/oauth/**")
                 .and()
                 .authorizeRequests()

@@ -19,6 +19,12 @@
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
             <version>2.5.4</version>
         </dependency>
+        <!--引入验证码框架-->
+        <dependency>
+            <groupId>com.github.whvcse</groupId>
+            <artifactId>easy-captcha</artifactId>
+            <version>1.6.2</version>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
