@@ -2,7 +2,7 @@ server:
   port: 8401
 spring:
   application:
-    name: by-server-test
+    name: by-cloud-server-test
 
 eureka:
   instance:

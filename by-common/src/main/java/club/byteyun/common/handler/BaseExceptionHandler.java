@@ -1,7 +1,7 @@
 package club.byteyun.common.handler;
 
-import club.byteyun.common.entity.BYResponse;
-import club.byteyun.common.exception.BYAuthException;
+import club.byteyun.common.entity.ByteYunResponse;
+import club.byteyun.common.exception.ByteYunAuthException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
@@ -23,24 +23,24 @@ public class BaseExceptionHandler
 
     @ExceptionHandler(value = Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public BYResponse handleException(Exception e)
+    public ByteYunResponse handleException(Exception e)
     {
         log.error("系统内部异常，异常信息", e);
-        return new BYResponse().message("系统内部异常");
+        return new ByteYunResponse().message("系统内部异常");
     }
 
-    @ExceptionHandler(value = BYAuthException.class)
+    @ExceptionHandler(value = ByteYunAuthException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public BYResponse handleFebsAuthException(AuthException e)
+    public ByteYunResponse handleFebsAuthException(AuthException e)
     {
         log.error("系统错误", e);
-        return new BYResponse().message(e.getMessage());
+        return new ByteYunResponse().message(e.getMessage());
     }
 
     @ExceptionHandler(value = AccessDeniedException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
-    public BYResponse handleAccessDeniedException()
+    public ByteYunResponse handleAccessDeniedException()
     {
-        return new BYResponse().message("没有权限访问该资源");
+        return new ByteYunResponse().message("没有权限访问该资源");
     }
 }

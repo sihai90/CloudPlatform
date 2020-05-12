@@ -2,7 +2,7 @@ server:
   port: 8201
 spring:
   application:
-    name: by-gateway
+    name: by-cloud-gateway
 
 eureka:
   instance:
@@ -18,15 +18,15 @@ zuul:
   routes:
     auth:
       path: /auth/**
-      serviceId: by-auth
+      serviceId: by-cloud-auth
       sensitiveHeaders: "*"
     system:
       path: /system/**
-      serviceId: by-server-system
+      serviceId: by-cloud-server-system
       sensitiveHeaders: "*"
     test:
       path: /test/**
-      serviceId: by-server-test
+      serviceId: by-cloud-server-test
       sensitiveHeaders: "*"
   retryable: true
   ignored-services: "*"

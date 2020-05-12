@@ -1,7 +1,7 @@
 package club.byteyun.auth.controller;
 
-import club.byteyun.common.entity.BYResponse;
-import club.byteyun.common.exception.BYAuthException;
+import club.byteyun.common.entity.ByteYunResponse;
+import club.byteyun.common.exception.ByteYunAuthException;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
@@ -37,15 +37,15 @@ public class SecurityController
     }
 
     @DeleteMapping("signout")
-    public BYResponse signout(HttpServletRequest request) throws BYAuthException
+    public ByteYunResponse signout(HttpServletRequest request) throws ByteYunAuthException
     {
         String authorization = request.getHeader("Authorization");
         String token = StringUtils.replace(authorization, "bearer ", "");
-        BYResponse byResponse = new BYResponse();
+        ByteYunResponse byteYunResponse = new ByteYunResponse();
         if (!consumerTokenServices.revokeToken(token))
         {
-            throw new BYAuthException("退出登录失败");
+            throw new ByteYunAuthException("退出登录失败");
         }
-        return byResponse.message("退出登录成功");
+        return byteYunResponse.message("退出登录成功");
     }
 }

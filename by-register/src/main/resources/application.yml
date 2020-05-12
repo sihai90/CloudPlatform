@@ -4,7 +4,7 @@ server:
     context-path: /register
 spring:
   application:
-    name: by-register
+    name: by-cloud-register
   security:
     user:
       name: by-cloud
