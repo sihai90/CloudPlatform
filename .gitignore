@@ -8,6 +8,7 @@
 /indexes/*
 /src/main/webapp/WEB-INF/classes/*
 target/
+/log/*
 node_modules/
 
 ### Mac ###
