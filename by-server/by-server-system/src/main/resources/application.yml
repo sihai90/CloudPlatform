@@ -4,9 +4,30 @@ server:
 spring:
   application:
     name: by-cloud-server-system
-  autoconfigure: #close DataSourceAutoConfig
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-
+  datasource: # config mysql
+    dynamic:
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        max-pool-size: 15
+        min-idle: 5
+        connection-test-query: select 1
+        pool-name: ByteYunHikariCP
+      primary: base
+      datasource:
+        base:
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://101.200.198.38:3306/byteyun_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+      p6spy: true #use dev and no Suggest use prod
+mybatis-plus:
+  type-aliases-package: club.byteyun.common.entity.system
+  mapper-locations: classpath:club/byteyun/server/system/mapper/*.xml
+  configuration:
+    jdbc-type-for-null: null
+  global-config:
+    banner: false
 eureka:
   instance:
     lease-renewal-interval-in-seconds: 20
@@ -22,3 +43,4 @@ security:
     resource:
       id: ${spring.application.name}
       user-info-uri: http://localhost:8201/auth/user
+

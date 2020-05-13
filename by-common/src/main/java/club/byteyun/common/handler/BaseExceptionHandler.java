@@ -2,13 +2,19 @@ package club.byteyun.common.handler;
 
 import club.byteyun.common.entity.ByteYunResponse;
 import club.byteyun.common.exception.ByteYunAuthException;
+import club.byteyun.common.exception.ByteYunException;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.security.auth.message.AuthException;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.Path;
+import java.util.Set;
 
 /**
  * @version 1.0
@@ -42,5 +48,33 @@ public class BaseExceptionHandler
     public ByteYunResponse handleAccessDeniedException()
     {
         return new ByteYunResponse().message("没有权限访问该资源");
+    }
+
+    @ExceptionHandler(value = ByteYunException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ByteYunResponse handleFebsException(ByteYunException e)
+    {
+        log.error("系统错误", e);
+        return new ByteYunResponse().message(e.getMessage());
+    }
+
+    /**
+     * 统一处理请求参数校验(普通传参)
+     *
+     * @param e ConstraintViolationException
+     * @return FebsResponse
+     */
+    @ExceptionHandler(value = ConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ByteYunResponse handleConstraintViolationException(ConstraintViolationException e) {
+        StringBuilder message = new StringBuilder();
+        Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+        for (ConstraintViolation<?> violation : violations) {
+            Path path = violation.getPropertyPath();
+            String[] pathArr = StringUtils.splitByWholeSeparatorPreserveAllTokens(path.toString(), ".");
+            message.append(pathArr[1]).append(violation.getMessage()).append(",");
+        }
+        message = new StringBuilder(message.substring(0, message.length() - 1));
+        return new ByteYunResponse().message(message.toString());
     }
 }
