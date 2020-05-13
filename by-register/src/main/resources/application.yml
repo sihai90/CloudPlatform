@@ -3,6 +3,12 @@ server:
   servlet:
     context-path: /register
 spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8501
+        username: byteyun
+        password: 123456
   application:
     name: by-cloud-register
   security:
@@ -10,6 +16,20 @@ spring:
       name: by-cloud
       password: 123456
 
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
 eureka:
   instance:
     hostname: localhost

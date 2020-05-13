@@ -5,7 +5,37 @@ spring:
     name: by-cloud-server-test
   autoconfigure: #close DataSourceAutoConfig
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration
+  boot:
+    admin:
+      client:
+        url: http://localhost:8501
+        username: byteyun
+        password: 123456
+  zipkin:
+    sender:
+      type: rabbit
+  sleuth:
+    sampler:
+      probability: 1
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: byteyun
+    password: 123456
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
 eureka:
   instance:
     lease-renewal-interval-in-seconds: 20

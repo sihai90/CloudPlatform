@@ -13,6 +13,7 @@
         <module>../by-auth</module>
         <module>../by-gateway</module>
         <module>../by-server</module>
+        <module>../by-monitor</module>
     </modules>
     <packaging>pom</packaging>
 

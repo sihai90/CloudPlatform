@@ -16,6 +16,7 @@
 
     <groupId>club.byteyun</groupId>
     <artifactId>by-server</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>by-server</name>
     <description>by-server-服务提供模块</description>
@@ -27,6 +28,21 @@
             <artifactId>by-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <!--Sleuth Zipkin链路追踪-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>

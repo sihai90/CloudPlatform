@@ -29,6 +29,9 @@ public class ByteYunServerTestResourceConfigure extends ResourceServerConfigurer
                 .antMatchers("/**")
                 .and()
                 .authorizeRequests()
+                .and()
+                .authorizeRequests().antMatchers("/actuator/**")
+                .permitAll()
                 .antMatchers("/**").authenticated();
     }
 
