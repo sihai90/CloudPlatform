@@ -40,9 +40,6 @@ public class ByteYunServerSystemResourceConfigure extends ResourceServerConfigur
                 .requestMatchers()
                 .antMatchers("/**")
                 .and()
-                .authorizeRequests().antMatchers("/actuator/**")
-                .permitAll()
-                .and()
                 .authorizeRequests()
                 .antMatchers(anonUrls).permitAll()
                 .antMatchers("/**").authenticated();
